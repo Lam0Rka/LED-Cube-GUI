@@ -1,25 +1,22 @@
+
 from design import MainWindow
 import sys
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.Qt import *
+from PyQt5.Qt import QApplication, QMainWindow
+from PyQt5.QtGui import QFontDatabase
+from PyQt5 import QtOpenGL
 
 
-class Example(QWidget, MainWindow):
+class GUI(QMainWindow):
     def __init__(self):
-        super(Example, self).__init__()
-        self.setupUi(self)
+        super(GUI, self).__init__()
+        self.ui = MainWindow()
+        self.ui.setupUi(self)
+        QFontDatabase.addApplicationFont("fonts/Rubik-Regular.ttf")
 
-        self.listWidget.currentRowChanged.connect(self.display)
 
-    def display(self, row):
-        self.stackedWidget.setCurrentIndex(row)
-
-def main():
+if __name__ == "__main__":
     app = QApplication(sys.argv)
-    ex = Example()
-    ex.show()
-    sys.exit(app.exec_())
+    window = GUI()
+    window.show()
 
-
-if __name__ == '__main__':
-    main()
+    sys.exit(app.exec())
