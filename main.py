@@ -1,25 +1,43 @@
 from design import MainWindow
+from Cube import Cube
 import sys
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.Qt import *
+from PyQt5.Qt import QApplication, QMainWindow
+from PyQt5.QtGui import QFontDatabase
+from PyQt5 import QtOpenGL
+
+cube = Cube()
 
 
-class Example(QWidget, MainWindow):
+class GUI(QMainWindow):
     def __init__(self):
-        super(Example, self).__init__()
-        self.setupUi(self)
+        super(GUI, self).__init__()
+        self.ui = MainWindow()
+        self.ui.setupUi(self)
+        QFontDatabase.addApplicationFont("fonts/Rubik-Regular.ttf")
 
-        self.listWidget.currentRowChanged.connect(self.display)
+        self.ui.pushButton_cube_confirm.clicked.connect(
+            lambda: self.press_confirm(cube, int(self.ui.lineEdit_X), int(self.ui.lineEdit_Y), int(self.ui.lineEdit_Z),
+                                       int(self.ui.lineEdit_R), int(self.ui.lineEdit_G), int(self.ui.lineEdit_B)))
+        self.ui.pushButton_cube_Load.clicked.connect(lambda: self.press_load())
+        self.ui.pushButton_file_load.clicked.connect(lambda: self.press_load())
+        self.ui.pushButton_file_confirm.clicked.connect(lambda: self.press_confirm_file())
+        self.ui.pushButton_file_open_file.clicked.connect(lambda: self.choose_file())
 
-    def display(self, row):
-        self.stackedWidget.setCurrentIndex(row)
+    def press_confirm(self, c: Cube, x, y, z, r, g, b) -> None:
+        c.set_color(x, y, z, r, g, b)
 
-def main():
+    def press_load(self) -> None:
+        pass
+
+    def choose_file(self) -> None:
+        pass
+
+    def press_confirm_file(self):
+        pass
+
+
+if __name__ == "__main__":
     app = QApplication(sys.argv)
-    ex = Example()
-    ex.show()
-    sys.exit(app.exec_())
-
-
-if __name__ == '__main__':
-    main()
+    window = GUI()
+    window.show()
+    sys.exit(app.exec())

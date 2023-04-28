@@ -1,11 +1,18 @@
+import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5.QtCore import QRegExp
+from PyQt5.QtGui import QRegExpValidator
+from PyQt5.QtGui import QFont
+from PyQt5.QtCore import Qt
 
 class MainWindow(object):
     def setupUi(self, MainWindow):
 
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1100, 650)
+
+        max_num_color = QRegExp("(0*(?:[0-9][0-9]?|[0-2][0-5][0-5]))")
+        max_num_coord = QRegExp("[0-7]")
 
         #central виджет
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -17,30 +24,53 @@ class MainWindow(object):
         #Всё, что относится к вкладке "Cube"
         self.tab_cube = QtWidgets.QWidget()
         self.tab_cube.setObjectName("tab_cube")
+
         self.openGLWidget = QtWidgets.QOpenGLWidget(self.tab_cube)
         self.openGLWidget.setGeometry(QtCore.QRect(300, 0, 791, 601))
         self.openGLWidget.setObjectName("openGLWidget")
 
-
         self.lineEdit_X = QtWidgets.QLineEdit(self.tab_cube)
         self.lineEdit_X.setGeometry(QtCore.QRect(60, 140, 41, 41))
         self.lineEdit_X.setObjectName("Edit_X")
+        self.lineEdit_X.setFont(QFont('Arial', 14))
+        input_validator = QRegExpValidator(max_num_coord, self.lineEdit_X)
+        self.lineEdit_X.setValidator(input_validator)
+
+
         self.lineEdit_Y = QtWidgets.QLineEdit(self.tab_cube)
         self.lineEdit_Y.setGeometry(QtCore.QRect(120, 140, 41, 41))
         self.lineEdit_Y.setObjectName("lineEdit_Y")
+        self.lineEdit_Y.setFont(QFont('Arial', 14))
+        input_validator = QRegExpValidator(max_num_coord, self.lineEdit_Y)
+        self.lineEdit_Y.setValidator(input_validator)
+
         self.lineEdit_Z = QtWidgets.QLineEdit(self.tab_cube)
         self.lineEdit_Z.setGeometry(QtCore.QRect(180, 140, 41, 41))
         self.lineEdit_Z.setObjectName("lineEdit_Z")
+        self.lineEdit_Z.setFont(QFont('Arial', 14))
+        input_validator = QRegExpValidator(max_num_coord, self.lineEdit_Z)
+        self.lineEdit_Z.setValidator(input_validator)
 
         self.lineEdit_R = QtWidgets.QLineEdit(self.tab_cube)
         self.lineEdit_R.setGeometry(QtCore.QRect(60, 300, 41, 41))
         self.lineEdit_R.setObjectName("Edit_R")
+        self.lineEdit_R.setFont(QFont('Arial', 14))
+        input_validator = QRegExpValidator(max_num_color, self.lineEdit_R)
+        self.lineEdit_R.setValidator(input_validator)
+
         self.lineEdit_G = QtWidgets.QLineEdit(self.tab_cube)
         self.lineEdit_G.setGeometry(QtCore.QRect(120, 300, 41, 41))
         self.lineEdit_G.setObjectName("lineEdit_G")
+        self.lineEdit_G.setFont(QFont('Arial', 14))
+        input_validator = QRegExpValidator(max_num_color, self.lineEdit_G)
+        self.lineEdit_G.setValidator(input_validator)
+
         self.lineEdit_B = QtWidgets.QLineEdit(self.tab_cube)
         self.lineEdit_B.setGeometry(QtCore.QRect(180, 300, 41, 41))
         self.lineEdit_B.setObjectName("lineEdit_B")
+        self.lineEdit_B.setFont(QFont('Arial', 14))
+        input_validator = QRegExpValidator(max_num_color, self.lineEdit_B)
+        self.lineEdit_B.setValidator(input_validator)
 
 
         self.pushButton_cube_Load = QtWidgets.QPushButton(self.tab_cube)
