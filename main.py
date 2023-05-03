@@ -1,7 +1,7 @@
 from design import MainWindow
 from Cube import Cube
 import sys
-from PyQt5.Qt import QApplication, QMainWindow
+from PyQt5.Qt import QApplication, QMainWindow, QFileDialog
 from PyQt5.QtGui import QFontDatabase
 from PyQt5 import QtOpenGL
 
@@ -27,10 +27,21 @@ class GUI(QMainWindow):
         c.set_color(x, y, z, r, g, b)
 
     def press_load(self) -> None:
-        pass
+        file_name = QFileDialog.getOpenFileName(self)[0]
+        
+        try:
+            self.file = open(file_name, 'w')
+        except FileNotFoundError:
+            print("File not found")
 
     def choose_file(self) -> None:
-        pass
+        file_name = QFileDialog.getOpenFileName(self)[0]
+        
+        try:
+            self.file = open(file_name, 'r')
+        except FileNotFoundError:
+            print("File not found")
+        
 
     def press_confirm_file(self):
         pass
