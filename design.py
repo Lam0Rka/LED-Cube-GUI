@@ -74,25 +74,32 @@ class MainWindow(object):
 
 
         self.pushButton_cube_Load = QtWidgets.QPushButton(self.tab_cube)
-        self.pushButton_cube_Load.setGeometry(QtCore.QRect(70, 480, 151, 41))
+        self.pushButton_cube_Load.setGeometry(QtCore.QRect(60, 430, 161, 41))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.pushButton_cube_Load.setFont(font)
         self.pushButton_cube_Load.setObjectName("pushButton_cube_Load")
 
         self.pushButton_cube_confirm = QtWidgets.QPushButton(self.tab_cube)
-        self.pushButton_cube_confirm.setGeometry(QtCore.QRect(70, 410, 151, 41))
+        self.pushButton_cube_confirm.setGeometry(QtCore.QRect(60, 370, 161, 41))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.pushButton_cube_confirm.setFont(font)
         self.pushButton_cube_confirm.setObjectName("pushButton_cube_confirm")
 
+        self.pushButton_open_cube = QtWidgets.QPushButton(self.tab_cube)
+        self.pushButton_open_cube.setGeometry(QtCore.QRect(60, 490, 161, 41))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.pushButton_open_cube.setFont(font)
+        self.pushButton_open_cube.setObjectName("pushButton_open_cube")
 
         self.label_coordinates = QtWidgets.QLabel(self.tab_cube)
-        self.label_coordinates.setGeometry(QtCore.QRect(60, 50, 180, 30))
+        self.label_coordinates.setGeometry(QtCore.QRect(60, 50, 161, 30))
         font = QtGui.QFont()
         font.setPointSize(20)
         self.label_coordinates.setFont(font)
+        self.label_coordinates.setAlignment(QtCore.Qt.AlignCenter)
         self.label_coordinates.setObjectName("label_coordinates")
 
         self.label_color = QtWidgets.QLabel(self.tab_cube)
@@ -105,22 +112,25 @@ class MainWindow(object):
 
 
         self.label_X = QtWidgets.QLabel(self.tab_cube)
-        self.label_X.setGeometry(QtCore.QRect(70, 100, 16, 31))
+        self.label_X.setGeometry(QtCore.QRect(70, 100, 21, 31))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_X.setFont(font)
         self.label_X.setObjectName("label_X")
+        self.label_X.setAlignment(QtCore.Qt.AlignCenter)
         self.label_Y = QtWidgets.QLabel(self.tab_cube)
         self.label_Y.setGeometry(QtCore.QRect(130, 100, 16, 31))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_Y.setFont(font)
         self.label_Y.setObjectName("label_Y")
+        self.label_Y.setAlignment(QtCore.Qt.AlignCenter)
         self.label_Z = QtWidgets.QLabel(self.tab_cube)
-        self.label_Z.setGeometry(QtCore.QRect(190, 100, 16, 31))
+        self.label_Z.setGeometry(QtCore.QRect(190, 100, 20, 31))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_Z.setFont(font)
+        self.label_Z.setAlignment(QtCore.Qt.AlignCenter)
         self.label_Z.setObjectName("label_Z")
 
         self.label_R = QtWidgets.QLabel(self.tab_cube)
@@ -128,6 +138,7 @@ class MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_R.setFont(font)
+        self.label_R.setAlignment(QtCore.Qt.AlignCenter)
         self.label_R.setObjectName("label_R")
 
         self.label_G = QtWidgets.QLabel(self.tab_cube)
@@ -135,6 +146,7 @@ class MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_G.setFont(font)
+        self.label_G.setAlignment(QtCore.Qt.AlignCenter)
         self.label_G.setObjectName("label_G")
 
         self.label_B = QtWidgets.QLabel(self.tab_cube)
@@ -142,6 +154,7 @@ class MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_B.setFont(font)
+        self.label_B.setAlignment(QtCore.Qt.AlignCenter)
         self.label_B.setObjectName("label_B")
 
 
@@ -204,6 +217,7 @@ class MainWindow(object):
 
         self.pushButton_cube_Load.setText(_translate("MainWindow", "Load"))
         self.pushButton_cube_confirm.setText(_translate("MainWindow", "Confirm"))
+        self.pushButton_open_cube.setText(_translate("MainWindow", "Open cube"))
 
         self.label_coordinates.setText(_translate("MainWindow", "Coordinates"))
         self.label_color.setText(_translate("MainWindow", "Color"))
