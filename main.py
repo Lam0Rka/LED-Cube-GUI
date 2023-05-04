@@ -1,5 +1,6 @@
 from design import MainWindow
 from Cube import Cube
+from Falcon9 import launch
 import sys
 from PyQt5.Qt import QApplication, QMainWindow, QFileDialog
 from PyQt5.QtGui import QFontDatabase
@@ -18,10 +19,11 @@ class GUI(QMainWindow):
         self.ui.pushButton_cube_confirm.clicked.connect(
             lambda: self.press_confirm(cube, int(self.ui.lineEdit_X), int(self.ui.lineEdit_Y), int(self.ui.lineEdit_Z),
                                        int(self.ui.lineEdit_R), int(self.ui.lineEdit_G), int(self.ui.lineEdit_B)))
-        self.ui.pushButton_cube_Load.clicked.connect(lambda: self.press_load())
-        self.ui.pushButton_file_load.clicked.connect(lambda: self.press_load())
-        self.ui.pushButton_file_confirm.clicked.connect(lambda: self.press_confirm_file())
-        self.ui.pushButton_file_open_file.clicked.connect(lambda: self.choose_file())
+        self.ui.pushButton_cube_Load.clicked.connect(self.press_load)
+        self.ui.pushButton_file_load.clicked.connect(self.press_load)
+        self.ui.pushButton_open_cube.clicked.connect(self.open_cube)
+        self.ui.pushButton_file_confirm.clicked.connect(self.press_confirm_file)
+        self.ui.pushButton_file_open_file.clicked.connect(self.choose_file)
 
     def press_confirm(self, c: Cube, x, y, z, r, g, b) -> None:
         c.set_color(x, y, z, r, g, b)
@@ -33,6 +35,9 @@ class GUI(QMainWindow):
             self.file = open(file_name, 'w')
         except FileNotFoundError:
             print("File not found")
+
+    def open_cube(self) -> None:
+        launch()
 
     def choose_file(self) -> None:
         file_name = QFileDialog.getOpenFileName(self)[0]
