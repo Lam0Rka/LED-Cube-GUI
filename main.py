@@ -1,6 +1,8 @@
 from design import MainWindow
 from Cube import Cube
 from Falcon9 import launch
+from tech_parser import shakalizator
+from tech_parser import conversion
 import sys
 from PyQt5.Qt import QApplication, QMainWindow, QFileDialog
 from PyQt5.QtGui import QFontDatabase
@@ -40,10 +42,15 @@ class GUI(QMainWindow):
         launch()
 
     def choose_file(self) -> None:
-        file_name = QFileDialog.getOpenFileName(self)[0]
+        dialog = QFileDialog(self)
+        dialog.setNameFilter("Json files (*.json)")
+
+        self.file_name = dialog.getOpenFileName(self)[0]
         
         try:
-            self.file = open(file_name, 'r')
+            array = shakalizator.compression(self.file_name)
+
+            # self.file = QFile(file_name)
         except FileNotFoundError:
             print("File not found")
         
