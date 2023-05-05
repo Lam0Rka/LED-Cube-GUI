@@ -15,3 +15,5 @@ Project files:
 design.py -> file with disgn... (this file same as after_pyuic5.py but with "readable" code)
 
 main.py -> main file...
+
+libs: numpy, matplotlib, pyqt5, pyopengl, trimesh, pygame
